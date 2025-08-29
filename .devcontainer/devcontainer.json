@@ -1,0 +1,40 @@
+{
+    "name": "MMDetection3D",
+    "build": {
+        "dockerfile": "../docker/Dockerfile",
+        "context": "..",
+        "args": {
+            "PYTORCH": "2.6.0",
+            "CUDA": "12.6",
+            "CUDNN": "9"
+        }
+    },
+    "runArgs": [
+        "--gpus",
+        "all",
+        "--shm-size=8g",
+        "--ipc=host"
+    ],
+    "mounts": [
+    "source=/media/bunty/Bunty/ubuntu_files/mmdetection3d-data,target=/mmdetection3d/dataset,type=bind"
+    ],
+    "customizations": {
+        "vscode": {
+            "settings": {
+
+                
+                "python.defaultInterpreterPath": "/opt/conda/bin/python",
+                "python.linting.enabled": true,
+                "python.formatting.autopep8Path": "/opt/conda/bin/autopep8",
+                "python.linting.pylintPath": "/opt/conda/bin/pylint"
+            },
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance"
+            ]
+        }
+    },
+    "workspaceMount": "source=${localWorkspaceFolder},target=/mmdetection3d,type=bind,consistency=cached",
+    "workspaceFolder": "/mmdetection3d",
+    "remoteUser": "root"
+}   
