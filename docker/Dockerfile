@@ -41,4 +41,17 @@ RUN conda clean --all \
     && cd /mmdetection3d \
     && pip install --no-cache-dir -e .
 
+# In your Dockerfile, add these lines
+RUN apt-get update && apt-get install -y \
+    libgl1-mesa-glx \
+    libgl1-mesa-dri \
+    libosmesa6 \
+    libosmesa6-dev \
+    xvfb
+
+# Set environment variables
+ENV DISPLAY=:0
+ENV OPEN3D_USE_OSMESA=1
+
+
 WORKDIR /mmdetection3d

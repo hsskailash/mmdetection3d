@@ -13,7 +13,9 @@
         "--gpus",
         "all",
         "--shm-size=8g",
-        "--ipc=host"
+        "--ipc=host",
+        "--volume=/tmp/.X11-unix:/tmp/.X11-unix",
+        "--env=DISPLAY=:0"
     ],
     "mounts": [
     "source=/media/bunty/Bunty/ubuntu_files/mmdetection3d-data,target=/mmdetection3d/dataset,type=bind"
